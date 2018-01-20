@@ -9,7 +9,17 @@
 import Foundation
 import CoreData
 
+@objc protocol PersistenceControllerDelegate: class {
+    
+    @objc optional func didFinishInsert(objects: Set<NSManagedObject>)
+    @objc optional func didFinishUpdate(objects: Set<NSManagedObject>)
+    @objc optional func didFinishDelete(objects: Set<NSManagedObject>)
+
+}
+
 class PersistenceController:NSObject{
+    
+    weak var delegate: PersistenceControllerDelegate?
     
     private lazy var applicationDocumentsDirectory: NSURL? = {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
@@ -56,6 +66,27 @@ class PersistenceController:NSObject{
         managedObjectContext.parent = self.privateContext
         return managedObjectContext
     }()
+    
+    override init(){
+        super.init()
+        NotificationCenter.default.addObserver(self, selector: #selector(privateContextDidSave), name: .NSManagedObjectContextDidSave, object: self.privateContext)
+    }
+    
+    @objc func privateContextDidSave(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+
+        if let inserts = userInfo[NSInsertedObjectsKey] as? Set<NSManagedObject>, inserts.count > 0 {
+            self.delegate?.didFinishInsert?(objects: inserts)
+        }
+        
+        if let updates = userInfo[NSUpdatedObjectsKey] as? Set<NSManagedObject>, updates.count > 0 {
+            self.delegate?.didFinishUpdate?(objects: updates)
+        }
+        
+        if let deletes = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject>, deletes.count > 0 {
+            self.delegate?.didFinishDelete?(objects: deletes)
+        }
+    }
     
     func save(){
         guard self.privateContext.hasChanges || self.managedObjectContext.hasChanges else { return }

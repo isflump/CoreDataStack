@@ -8,9 +8,18 @@
 
 import Foundation
 
-protocol CoreDataDemoDataSource {
-    var dataCount: Int { get }
+protocol CoreDataDemoDataSource{
+    
+    var students: [Student]? { get }
+    weak var delegate: CoreDataDemoDataSourceDelegate? { get set }
 
     init(persistenceController: PersistenceController)
     func startGeneratingMockData()
+}
+
+protocol CoreDataDemoDataSourceDelegate: class {
+    
+    func didCreated(students: [Student])
+    func didSaved(students: [Student])
+    
 }

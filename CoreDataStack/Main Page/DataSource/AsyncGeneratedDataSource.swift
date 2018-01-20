@@ -9,50 +9,48 @@
 import Foundation
 import CoreData
 
-class AsyncGeneratedDataSource: CoreDataDemoDataSource {
+class AsyncGeneratedDataSource: CoreDataDemoDataSource, PersistenceControllerDelegate{
     
     var persistenceController: PersistenceController
     var context: NSManagedObjectContext
-    var dataCount: Int {
-        get {
-            return 0
+    var students: [Student]? {
+        get{
+            return self.context.getStudents()
         }
     }
     
-    required init(persistenceController: PersistenceController) {
-        self.persistenceController = persistenceController
+    weak var delegate: CoreDataDemoDataSourceDelegate?
+    
+    required init(persistenceController: PersistenceController){
         self.context = persistenceController.createChildContext()
-        startGeneratingMockData()
+        self.persistenceController = persistenceController
+        self.persistenceController.delegate = self
     }
     
     func startGeneratingMockData(){
         for _ in 0...10{
-            createAndSaveNewStudent()
+            if let student = createAndSaveNewStudent(){
+                self.delegate?.didCreated(students: [student])
+            }
         }
     }
     
-    func managedObjectContextObjectsDidChange(notification: NSNotification) {
-        guard let userInfo = notification.userInfo else { return }
-        
-        if let inserts = userInfo[NSInsertedObjectsKey] as? Set<NSManagedObject> where inserts.count > 0 {
-            
-        }
-        
-        if let updates = userInfo[NSUpdatedObjectsKey] as? Set<NSManagedObject> where updates.count > 0 {
-            
-        }
-        
-        if let deletes = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject> where deletes.count > 0 {
-            
-        }
-    }
-    
-    func createAndSaveNewStudent(){
+    func createAndSaveNewStudent() -> Student?{
         let name = Utils.randomName()
         let gender = Utils.randomGender()
         if let student = self.context.createStudentWith(name: name, gender: gender.rawValue, university: nil){
             self.context.save(student: student)
             self.persistenceController.save()
+            return student
+        }
+        return nil
+    }
+    
+    // MARK: PersistenceControllerDelegate
+    func didFinishInsert(objects: Set<NSManagedObject>){
+        if let students = Array(objects) as? [Student]{
+            self.delegate?.didCreated(students: students)
+            print(students)
         }
     }
     

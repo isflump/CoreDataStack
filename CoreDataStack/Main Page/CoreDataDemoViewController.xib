@@ -6,12 +6,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CoreDataDemoViewController" customModule="CoreDataStack" customModuleProvider="target">
             <connections>
+                <outlet property="generateDataButton" destination="0lc-t5-PCF" id="6at-vw-gcn"/>
                 <outlet property="tableView" destination="kHZ-JC-USn" id="aP1-WL-fN6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -27,8 +29,25 @@
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhC-eo-Zxb">
                     <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0lc-t5-PCF">
+                            <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
+                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="Start Generate Data">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapGenerateDataButton:" destination="-1" eventType="touchUpInside" id="kJT-vt-Nyf"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="0lc-t5-PCF" firstAttribute="top" secondItem="qhC-eo-Zxb" secondAttribute="top" id="HxD-5L-kl9"/>
+                        <constraint firstItem="0lc-t5-PCF" firstAttribute="leading" secondItem="qhC-eo-Zxb" secondAttribute="leading" id="MCm-sv-mzp"/>
+                        <constraint firstItem="0lc-t5-PCF" firstAttribute="width" secondItem="qhC-eo-Zxb" secondAttribute="width" multiplier="0.5" id="bbh-fc-Cra"/>
+                        <constraint firstAttribute="bottom" secondItem="0lc-t5-PCF" secondAttribute="bottom" id="dqe-E1-cSk"/>
                         <constraint firstAttribute="height" constant="50" id="rfW-wd-e1o"/>
                     </constraints>
                 </view>

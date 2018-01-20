@@ -8,12 +8,13 @@
 
 import UIKit
 
-class CoreDataDemoViewController: UIViewController, UITableViewDataSource {
-    
+class CoreDataDemoViewController: UIViewController, UITableViewDataSource, CoreDataDemoDataSourceDelegate {
+
     var persistenceController: PersistenceController?
     var asyncGeneratedDataSource: CoreDataDemoDataSource?
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var generateDataButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,7 @@ class CoreDataDemoViewController: UIViewController, UITableViewDataSource {
     fileprivate func setupDataSource(){
         guard let persistenceController = persistenceController else { return }
         asyncGeneratedDataSource = AsyncGeneratedDataSource(persistenceController: persistenceController)
-        asyncGeneratedDataSource?.startGeneratingMockData()
+        asyncGeneratedDataSource?.delegate = self
     }
     
     fileprivate func setupTableView(){
@@ -35,18 +36,32 @@ class CoreDataDemoViewController: UIViewController, UITableViewDataSource {
         self.tableView.register(UINib.init(nibName: "CoreDataDemoLoggingTableViewCell", bundle: nil), forCellReuseIdentifier: "CoreDataDemoLoggingTableViewCell")
     }
     
-    //TableViewDataSource
+    @IBAction func didTapGenerateDataButton(_ sender: Any) {
+        self.asyncGeneratedDataSource?.startGeneratingMockData()
+    }
+    // MARK: TableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        return dataSource?.dataCount ?? 0
-        return 2
+        return self.asyncGeneratedDataSource?.students?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "CoreDataDemoLoggingTableViewCell") as? CoreDataDemoLoggingTableViewCell else{
             return UITableViewCell()
         }
-        cell.logLabel.text = "abcdea\n\n\n\n\nabcdd"
+        let student = self.asyncGeneratedDataSource?.students?[indexPath.item] ?? Student()
+        cell.logLabel.text = "Student Name: \(student.name ?? "")   |    Gender: \(student.gender ?? "")"
         return cell
     }
     
+    // MARK: CoreDataDemoDataSourceDelegate
+    func didCreated(students: [Student]) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func didSaved(students: [Student]) {
+        
+    }
 }

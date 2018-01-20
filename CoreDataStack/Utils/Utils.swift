@@ -35,6 +35,6 @@ class Utils {
     }
     
     static func randomGender() -> Gender{
-        return  Utils.randomNumber(min: 0, max: 1) == 1 ? Gender.Female : Gender.Male
+        return  Utils.randomNumber(min: 0, max: 2) == 1 ? Gender.Female : Gender.Male
     }
 }
