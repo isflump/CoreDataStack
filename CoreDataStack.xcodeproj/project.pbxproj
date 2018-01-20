@@ -8,13 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		0122CAAE200C0EC10075EF23 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0122CAAD200C0EC10075EF23 /* PersistenceController.swift */; };
+		3D3E2DB92012F80A00DE6531 /* NSManagedObjectContext+Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E2DB82012F80A00DE6531 /* NSManagedObjectContext+Student.swift */; };
+		3D3E2DBC2012FA1100DE6531 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E2DBB2012FA1100DE6531 /* Utils.swift */; };
+		3D3E2DBF2012FAFF00DE6531 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E2DBE2012FAFF00DE6531 /* Enums.swift */; };
 		3D41FADD200BDBE700367993 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D41FADC200BDBE700367993 /* AppDelegate.swift */; };
-		3D41FADF200BDBE700367993 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D41FADE200BDBE700367993 /* ViewController.swift */; };
 		3D41FAE2200BDBE700367993 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D41FAE0200BDBE700367993 /* Main.storyboard */; };
 		3D41FAE5200BDBE700367993 /* CoreDataStack.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D41FAE3200BDBE700367993 /* CoreDataStack.xcdatamodeld */; };
 		3D41FAE7200BDBE700367993 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D41FAE6200BDBE700367993 /* Assets.xcassets */; };
 		3D41FAEA200BDBE700367993 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D41FAE8200BDBE700367993 /* LaunchScreen.storyboard */; };
 		3D41FAF5200BDBE800367993 /* CoreDataStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D41FAF4200BDBE800367993 /* CoreDataStackTests.swift */; };
+		3D9749B62012E7E2009B2BE0 /* CoreDataDemoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9749B52012E7E2009B2BE0 /* CoreDataDemoDataSource.swift */; };
+		3D9749B92012E853009B2BE0 /* CoreDataDemoLoggingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9749B72012E853009B2BE0 /* CoreDataDemoLoggingTableViewCell.swift */; };
+		3D9749BA2012E853009B2BE0 /* CoreDataDemoLoggingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D9749B82012E853009B2BE0 /* CoreDataDemoLoggingTableViewCell.xib */; };
+		3DA4030F201100BB00795CF1 /* CoreDataDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4030D201100BB00795CF1 /* CoreDataDemoViewController.swift */; };
+		3DA40310201100BB00795CF1 /* CoreDataDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA4030E201100BB00795CF1 /* CoreDataDemoViewController.xib */; };
+		3DA40313201107CC00795CF1 /* AsyncGeneratedDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA40312201107CC00795CF1 /* AsyncGeneratedDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,9 +37,11 @@
 
 /* Begin PBXFileReference section */
 		0122CAAD200C0EC10075EF23 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		3D3E2DB82012F80A00DE6531 /* NSManagedObjectContext+Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Student.swift"; sourceTree = "<group>"; };
+		3D3E2DBB2012FA1100DE6531 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		3D3E2DBE2012FAFF00DE6531 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		3D41FAD9200BDBE700367993 /* CoreDataStack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataStack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D41FADC200BDBE700367993 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3D41FADE200BDBE700367993 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3D41FAE1200BDBE700367993 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3D41FAE4200BDBE700367993 /* CoreDataStack.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataStack.xcdatamodel; sourceTree = "<group>"; };
 		3D41FAE6200BDBE700367993 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -40,6 +50,12 @@
 		3D41FAF0200BDBE800367993 /* CoreDataStackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataStackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D41FAF4200BDBE800367993 /* CoreDataStackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStackTests.swift; sourceTree = "<group>"; };
 		3D41FAF6200BDBE800367993 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D9749B52012E7E2009B2BE0 /* CoreDataDemoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDemoDataSource.swift; sourceTree = "<group>"; };
+		3D9749B72012E853009B2BE0 /* CoreDataDemoLoggingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDemoLoggingTableViewCell.swift; sourceTree = "<group>"; };
+		3D9749B82012E853009B2BE0 /* CoreDataDemoLoggingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoreDataDemoLoggingTableViewCell.xib; sourceTree = "<group>"; };
+		3DA4030D201100BB00795CF1 /* CoreDataDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDemoViewController.swift; sourceTree = "<group>"; };
+		3DA4030E201100BB00795CF1 /* CoreDataDemoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoreDataDemoViewController.xib; sourceTree = "<group>"; };
+		3DA40312201107CC00795CF1 /* AsyncGeneratedDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncGeneratedDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,9 +79,29 @@
 		0122CAAC200C0E620075EF23 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				3D9749BB2012F703009B2BE0 /* Context */,
 				0122CAAD200C0EC10075EF23 /* PersistenceController.swift */,
+				3D41FAE3200BDBE700367993 /* CoreDataStack.xcdatamodeld */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		3D3E2DBA2012F9FA00DE6531 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3D3E2DBB2012FA1100DE6531 /* Utils.swift */,
+				3D3E2DBE2012FAFF00DE6531 /* Enums.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		3D3E2DC02012FC2700DE6531 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				3D9749B52012E7E2009B2BE0 /* CoreDataDemoDataSource.swift */,
+				3DA40312201107CC00795CF1 /* AsyncGeneratedDataSource.swift */,
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 		3D41FAD0200BDBE700367993 = {
@@ -90,13 +126,14 @@
 			isa = PBXGroup;
 			children = (
 				0122CAAC200C0E620075EF23 /* CoreData */,
+				3D3E2DBA2012F9FA00DE6531 /* Utils */,
+				3D9749B42012E7CC009B2BE0 /* Common */,
+				3DA4030C2011004000795CF1 /* Main Page */,
 				3D41FADC200BDBE700367993 /* AppDelegate.swift */,
-				3D41FADE200BDBE700367993 /* ViewController.swift */,
 				3D41FAE0200BDBE700367993 /* Main.storyboard */,
 				3D41FAE6200BDBE700367993 /* Assets.xcassets */,
 				3D41FAE8200BDBE700367993 /* LaunchScreen.storyboard */,
 				3D41FAEB200BDBE800367993 /* Info.plist */,
-				3D41FAE3200BDBE700367993 /* CoreDataStack.xcdatamodeld */,
 			);
 			path = CoreDataStack;
 			sourceTree = "<group>";
@@ -108,6 +145,41 @@
 				3D41FAF6200BDBE800367993 /* Info.plist */,
 			);
 			path = CoreDataStackTests;
+			sourceTree = "<group>";
+		};
+		3D9749B42012E7CC009B2BE0 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		3D9749BB2012F703009B2BE0 /* Context */ = {
+			isa = PBXGroup;
+			children = (
+				3D3E2DB82012F80A00DE6531 /* NSManagedObjectContext+Student.swift */,
+			);
+			path = Context;
+			sourceTree = "<group>";
+		};
+		3DA4030C2011004000795CF1 /* Main Page */ = {
+			isa = PBXGroup;
+			children = (
+				3D3E2DC02012FC2700DE6531 /* DataSource */,
+				3DA40311201106C500795CF1 /* Views */,
+				3DA4030E201100BB00795CF1 /* CoreDataDemoViewController.xib */,
+				3DA4030D201100BB00795CF1 /* CoreDataDemoViewController.swift */,
+			);
+			path = "Main Page";
+			sourceTree = "<group>";
+		};
+		3DA40311201106C500795CF1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3D9749B72012E853009B2BE0 /* CoreDataDemoLoggingTableViewCell.swift */,
+				3D9749B82012E853009B2BE0 /* CoreDataDemoLoggingTableViewCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,6 +267,8 @@
 			files = (
 				3D41FAEA200BDBE700367993 /* LaunchScreen.storyboard in Resources */,
 				3D41FAE7200BDBE700367993 /* Assets.xcassets in Resources */,
+				3D9749BA2012E853009B2BE0 /* CoreDataDemoLoggingTableViewCell.xib in Resources */,
+				3DA40310201100BB00795CF1 /* CoreDataDemoViewController.xib in Resources */,
 				3D41FAE2200BDBE700367993 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,10 +287,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D41FADF200BDBE700367993 /* ViewController.swift in Sources */,
+				3DA40313201107CC00795CF1 /* AsyncGeneratedDataSource.swift in Sources */,
+				3DA4030F201100BB00795CF1 /* CoreDataDemoViewController.swift in Sources */,
+				3D3E2DBC2012FA1100DE6531 /* Utils.swift in Sources */,
+				3D9749B62012E7E2009B2BE0 /* CoreDataDemoDataSource.swift in Sources */,
+				3D3E2DB92012F80A00DE6531 /* NSManagedObjectContext+Student.swift in Sources */,
+				3D3E2DBF2012FAFF00DE6531 /* Enums.swift in Sources */,
 				3D41FADD200BDBE700367993 /* AppDelegate.swift in Sources */,
 				3D41FAE5200BDBE700367993 /* CoreDataStack.xcdatamodeld in Sources */,
 				0122CAAE200C0EC10075EF23 /* PersistenceController.swift in Sources */,
+				3D9749B92012E853009B2BE0 /* CoreDataDemoLoggingTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

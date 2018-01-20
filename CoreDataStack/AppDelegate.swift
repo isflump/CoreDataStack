@@ -13,11 +13,21 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let persistenceController = PersistenceController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        setupMainVC()
         return true
+    }
+    
+    fileprivate func setupMainVC(){
+        UIApplication.shared.isStatusBarHidden = true
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let mainViewController = CoreDataDemoViewController()
+        mainViewController.persistenceController =  self.persistenceController
+        window?.rootViewController = mainViewController
+        window?.makeKeyAndVisible()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
