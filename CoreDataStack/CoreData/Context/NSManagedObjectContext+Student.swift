@@ -30,7 +30,19 @@ extension NSManagedObjectContext{
         }
     }
     
-    func save(student:Student) {
+    func deleteAllStudents() {
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Student")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+        
+        do {
+            try self.execute(deleteRequest)
+            self.safeSave()
+        } catch {
+            print ("There was an error")
+        }
+    }
+    
+    func safeSave() {
         self.performAndWait {
             do{
                 try self.save()

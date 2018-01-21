@@ -13,7 +13,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CoreDataDemoViewController" customModule="CoreDataStack" customModuleProvider="target">
             <connections>
+                <outlet property="clearDataButton" destination="KBZ-y5-FGp" id="4DC-35-ath"/>
                 <outlet property="generateDataButton" destination="0lc-t5-PCF" id="6at-vw-gcn"/>
+                <outlet property="stopButton" destination="Yw9-m9-fvO" id="eCe-UY-C7x"/>
                 <outlet property="tableView" destination="kHZ-JC-USn" id="aP1-WL-fN6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -31,9 +33,9 @@
                     <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0lc-t5-PCF">
-                            <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="125" height="50"/>
                             <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <state key="normal" title="Start Generate Data">
+                            <state key="normal" title="Generate Data">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
@@ -41,14 +43,39 @@
                                 <action selector="didTapGenerateDataButton:" destination="-1" eventType="touchUpInside" id="kJT-vt-Nyf"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yw9-m9-fvO">
+                            <rect key="frame" x="125" y="0.0" width="125" height="50"/>
+                            <color key="backgroundColor" red="1" green="0.14079212079847447" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="Stop">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapStopButton:" destination="-1" eventType="touchUpInside" id="RlA-a8-RB6"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KBZ-y5-FGp">
+                            <rect key="frame" x="250" y="0.0" width="125" height="50"/>
+                            <state key="normal" title="Clear"/>
+                            <connections>
+                                <action selector="didTapClearDataButton:" destination="-1" eventType="touchUpInside" id="nbU-hY-te4"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="KBZ-y5-FGp" firstAttribute="leading" secondItem="Yw9-m9-fvO" secondAttribute="trailing" id="DcR-j3-V0I"/>
                         <constraint firstItem="0lc-t5-PCF" firstAttribute="top" secondItem="qhC-eo-Zxb" secondAttribute="top" id="HxD-5L-kl9"/>
+                        <constraint firstItem="Yw9-m9-fvO" firstAttribute="leading" secondItem="0lc-t5-PCF" secondAttribute="trailing" id="IxA-np-4nn"/>
                         <constraint firstItem="0lc-t5-PCF" firstAttribute="leading" secondItem="qhC-eo-Zxb" secondAttribute="leading" id="MCm-sv-mzp"/>
-                        <constraint firstItem="0lc-t5-PCF" firstAttribute="width" secondItem="qhC-eo-Zxb" secondAttribute="width" multiplier="0.5" id="bbh-fc-Cra"/>
+                        <constraint firstItem="Yw9-m9-fvO" firstAttribute="width" secondItem="qhC-eo-Zxb" secondAttribute="width" multiplier="1/3" id="Nva-Nt-Mxr"/>
+                        <constraint firstAttribute="bottom" secondItem="Yw9-m9-fvO" secondAttribute="bottom" id="YFp-ix-5EI"/>
+                        <constraint firstItem="0lc-t5-PCF" firstAttribute="width" secondItem="qhC-eo-Zxb" secondAttribute="width" multiplier="1/3" id="bbh-fc-Cra"/>
                         <constraint firstAttribute="bottom" secondItem="0lc-t5-PCF" secondAttribute="bottom" id="dqe-E1-cSk"/>
+                        <constraint firstAttribute="bottom" secondItem="KBZ-y5-FGp" secondAttribute="bottom" id="j1e-kX-q3d"/>
+                        <constraint firstItem="Yw9-m9-fvO" firstAttribute="top" secondItem="qhC-eo-Zxb" secondAttribute="top" id="oQV-4s-vMZ"/>
                         <constraint firstAttribute="height" constant="50" id="rfW-wd-e1o"/>
+                        <constraint firstAttribute="trailing" secondItem="KBZ-y5-FGp" secondAttribute="trailing" id="sce-lb-tYB"/>
+                        <constraint firstItem="KBZ-y5-FGp" firstAttribute="top" secondItem="qhC-eo-Zxb" secondAttribute="top" id="wXt-6Y-N7m"/>
                     </constraints>
                 </view>
             </subviews>
@@ -63,6 +90,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kHZ-JC-USn" secondAttribute="trailing" id="zIZ-xp-3zk"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>
 </document>

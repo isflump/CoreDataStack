@@ -15,6 +15,8 @@ protocol CoreDataDemoDataSource{
 
     init(persistenceController: PersistenceController)
     func startGeneratingMockData()
+    func stopGeneratingMockData()
+    func clearGeneratedMockData()
 }
 
 protocol CoreDataDemoDataSourceDelegate: class {

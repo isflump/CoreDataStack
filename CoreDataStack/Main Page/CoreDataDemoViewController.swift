@@ -13,8 +13,17 @@ class CoreDataDemoViewController: UIViewController, UITableViewDataSource, CoreD
     var persistenceController: PersistenceController?
     var asyncGeneratedDataSource: CoreDataDemoDataSource?
     
+    private var lastRow: Int {
+        get{
+            return (self.asyncGeneratedDataSource?.students?.count ?? 1) - 1
+        }
+    }
+
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var generateDataButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var clearDataButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,9 +48,19 @@ class CoreDataDemoViewController: UIViewController, UITableViewDataSource, CoreD
     @IBAction func didTapGenerateDataButton(_ sender: Any) {
         self.asyncGeneratedDataSource?.startGeneratingMockData()
     }
+    
+    @IBAction func didTapStopButton(_ sender: Any) {
+        self.asyncGeneratedDataSource?.stopGeneratingMockData()
+    }
+    
+    @IBAction func didTapClearDataButton(_ sender: Any) {
+        self.asyncGeneratedDataSource?.clearGeneratedMockData()
+        self.tableView.reloadData()
+    }
+    
+    @IBOutlet weak var didTapClearDataButton: UIButton!
     // MARK: TableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return dataSource?.dataCount ?? 0
         return self.asyncGeneratedDataSource?.students?.count ?? 0
     }
     
@@ -56,12 +75,17 @@ class CoreDataDemoViewController: UIViewController, UITableViewDataSource, CoreD
     
     // MARK: CoreDataDemoDataSourceDelegate
     func didCreated(students: [Student]) {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+        for _ in students{
+            self.tableView.insertRows(at: [IndexPath(row:self.lastRow, section:0)], with: .bottom)
+            self.scrollToBottom()
         }
     }
     
     func didSaved(students: [Student]) {
         
+    }
+    
+    fileprivate func scrollToBottom(){
+        self.tableView.scrollToRow(at: IndexPath(row: lastRow, section: 0), at: .bottom , animated: true)
     }
 }

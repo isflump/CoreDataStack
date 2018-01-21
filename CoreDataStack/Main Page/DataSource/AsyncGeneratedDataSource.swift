@@ -19,6 +19,8 @@ class AsyncGeneratedDataSource: CoreDataDemoDataSource, PersistenceControllerDel
         }
     }
     
+    var timer: Timer?
+    
     weak var delegate: CoreDataDemoDataSourceDelegate?
     
     required init(persistenceController: PersistenceController){
@@ -28,28 +30,44 @@ class AsyncGeneratedDataSource: CoreDataDemoDataSource, PersistenceControllerDel
     }
     
     func startGeneratingMockData(){
-        for _ in 0...10{
-            if let student = createAndSaveNewStudent(){
+        if timer?.isValid ?? false { return }
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { (timer) in
+            if let student = self.createAndSaveNewStudent(){
                 self.delegate?.didCreated(students: [student])
             }
         }
     }
     
-    func createAndSaveNewStudent() -> Student?{
+    func stopGeneratingMockData(){
+        timer?.invalidate()
+    }
+    
+    func clearGeneratedMockData(){
+        deleteAllGeneratedStudentData()
+    }
+    
+    
+    
+    fileprivate func createAndSaveNewStudent() -> Student?{
         let name = Utils.randomName()
         let gender = Utils.randomGender()
         if let student = self.context.createStudentWith(name: name, gender: gender.rawValue, university: nil){
-            self.context.save(student: student)
+            self.context.safeSave()
             self.persistenceController.save()
             return student
         }
         return nil
     }
     
+    fileprivate func deleteAllGeneratedStudentData(){
+        self.context.deleteAllStudents()
+        self.persistenceController.save()
+    }
+    
     // MARK: PersistenceControllerDelegate
     func didFinishInsert(objects: Set<NSManagedObject>){
         if let students = Array(objects) as? [Student]{
-            self.delegate?.didCreated(students: students)
+            self.delegate?.didSaved(students: students)
             print(students)
         }
     }
