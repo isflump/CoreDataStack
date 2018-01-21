@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class AsyncGeneratedDataSource: CoreDataDemoDataSource, PersistenceControllerDelegate{
+class MocGeneratedDataSource: CoreDataDemoDataSource, PersistenceControllerDelegate{
     
     var persistenceController: PersistenceController
     var context: NSManagedObjectContext
@@ -18,7 +18,6 @@ class AsyncGeneratedDataSource: CoreDataDemoDataSource, PersistenceControllerDel
             return self.context.getStudents()
         }
     }
-    
     var timer: Timer?
     
     weak var delegate: CoreDataDemoDataSourceDelegate?
@@ -46,7 +45,15 @@ class AsyncGeneratedDataSource: CoreDataDemoDataSource, PersistenceControllerDel
         deleteAllGeneratedStudentData()
     }
     
-    
+    func index(of student:Student) -> Int?{
+        guard let students = students else { return nil }
+        for (i,s) in students.enumerated(){
+            if s.objectID == student.objectID {
+                return i
+            }
+        }
+        return nil
+    }
     
     fileprivate func createAndSaveNewStudent() -> Student?{
         let name = Utils.randomName()
@@ -68,7 +75,6 @@ class AsyncGeneratedDataSource: CoreDataDemoDataSource, PersistenceControllerDel
     func didFinishInsert(objects: Set<NSManagedObject>){
         if let students = Array(objects) as? [Student]{
             self.delegate?.didSaved(students: students)
-            print(students)
         }
     }
     

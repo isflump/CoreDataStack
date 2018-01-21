@@ -86,8 +86,8 @@
                 <constraint firstItem="kHZ-JC-USn" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="flj-9D-W94"/>
                 <constraint firstItem="qhC-eo-Zxb" firstAttribute="top" secondItem="kHZ-JC-USn" secondAttribute="bottom" id="iM4-0s-eHE"/>
                 <constraint firstItem="kHZ-JC-USn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="sbB-88-oFL"/>
+                <constraint firstItem="kHZ-JC-USn" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" id="vbH-jn-Akd"/>
                 <constraint firstItem="qhC-eo-Zxb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="x3n-Mf-Tt4"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kHZ-JC-USn" secondAttribute="trailing" id="zIZ-xp-3zk"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="53.5"/>

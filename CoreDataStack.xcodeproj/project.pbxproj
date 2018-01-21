@@ -22,7 +22,7 @@
 		3D9749BA2012E853009B2BE0 /* CoreDataDemoLoggingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D9749B82012E853009B2BE0 /* CoreDataDemoLoggingTableViewCell.xib */; };
 		3DA4030F201100BB00795CF1 /* CoreDataDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4030D201100BB00795CF1 /* CoreDataDemoViewController.swift */; };
 		3DA40310201100BB00795CF1 /* CoreDataDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA4030E201100BB00795CF1 /* CoreDataDemoViewController.xib */; };
-		3DA40313201107CC00795CF1 /* AsyncGeneratedDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA40312201107CC00795CF1 /* AsyncGeneratedDataSource.swift */; };
+		3DA40313201107CC00795CF1 /* MocGeneratedDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA40312201107CC00795CF1 /* MocGeneratedDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +55,7 @@
 		3D9749B82012E853009B2BE0 /* CoreDataDemoLoggingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoreDataDemoLoggingTableViewCell.xib; sourceTree = "<group>"; };
 		3DA4030D201100BB00795CF1 /* CoreDataDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDemoViewController.swift; sourceTree = "<group>"; };
 		3DA4030E201100BB00795CF1 /* CoreDataDemoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoreDataDemoViewController.xib; sourceTree = "<group>"; };
-		3DA40312201107CC00795CF1 /* AsyncGeneratedDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncGeneratedDataSource.swift; sourceTree = "<group>"; };
+		3DA40312201107CC00795CF1 /* MocGeneratedDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocGeneratedDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				3D9749B52012E7E2009B2BE0 /* CoreDataDemoDataSource.swift */,
-				3DA40312201107CC00795CF1 /* AsyncGeneratedDataSource.swift */,
+				3DA40312201107CC00795CF1 /* MocGeneratedDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -287,7 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DA40313201107CC00795CF1 /* AsyncGeneratedDataSource.swift in Sources */,
+				3DA40313201107CC00795CF1 /* MocGeneratedDataSource.swift in Sources */,
 				3DA4030F201100BB00795CF1 /* CoreDataDemoViewController.swift in Sources */,
 				3D3E2DBC2012FA1100DE6531 /* Utils.swift in Sources */,
 				3D9749B62012E7E2009B2BE0 /* CoreDataDemoDataSource.swift in Sources */,

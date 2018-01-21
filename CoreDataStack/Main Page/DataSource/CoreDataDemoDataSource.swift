@@ -11,12 +11,16 @@ import Foundation
 protocol CoreDataDemoDataSource{
     
     var students: [Student]? { get }
+    
     weak var delegate: CoreDataDemoDataSourceDelegate? { get set }
 
     init(persistenceController: PersistenceController)
+    func index(of student:Student) -> Int?
+    
     func startGeneratingMockData()
     func stopGeneratingMockData()
     func clearGeneratedMockData()
+    
 }
 
 protocol CoreDataDemoDataSourceDelegate: class {

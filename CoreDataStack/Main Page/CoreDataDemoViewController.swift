@@ -11,15 +11,14 @@ import UIKit
 class CoreDataDemoViewController: UIViewController, UITableViewDataSource, CoreDataDemoDataSourceDelegate {
 
     var persistenceController: PersistenceController?
-    var asyncGeneratedDataSource: CoreDataDemoDataSource?
+    var mocGeneratedDataSource: CoreDataDemoDataSource?
     
     private var lastRow: Int {
         get{
-            return (self.asyncGeneratedDataSource?.students?.count ?? 1) - 1
+            return (self.mocGeneratedDataSource?.students?.count ?? 1) - 1
         }
     }
 
-    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var generateDataButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
@@ -33,8 +32,8 @@ class CoreDataDemoViewController: UIViewController, UITableViewDataSource, CoreD
     
     fileprivate func setupDataSource(){
         guard let persistenceController = persistenceController else { return }
-        asyncGeneratedDataSource = AsyncGeneratedDataSource(persistenceController: persistenceController)
-        asyncGeneratedDataSource?.delegate = self
+        mocGeneratedDataSource = MocGeneratedDataSource(persistenceController: persistenceController)
+        mocGeneratedDataSource?.delegate = self
     }
     
     fileprivate func setupTableView(){
@@ -46,46 +45,54 @@ class CoreDataDemoViewController: UIViewController, UITableViewDataSource, CoreD
     }
     
     @IBAction func didTapGenerateDataButton(_ sender: Any) {
-        self.asyncGeneratedDataSource?.startGeneratingMockData()
+        self.mocGeneratedDataSource?.startGeneratingMockData()
     }
     
     @IBAction func didTapStopButton(_ sender: Any) {
-        self.asyncGeneratedDataSource?.stopGeneratingMockData()
+        self.mocGeneratedDataSource?.stopGeneratingMockData()
     }
     
     @IBAction func didTapClearDataButton(_ sender: Any) {
-        self.asyncGeneratedDataSource?.clearGeneratedMockData()
+        self.mocGeneratedDataSource?.clearGeneratedMockData()
         self.tableView.reloadData()
     }
     
-    @IBOutlet weak var didTapClearDataButton: UIButton!
     // MARK: TableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.asyncGeneratedDataSource?.students?.count ?? 0
+        return self.mocGeneratedDataSource?.students?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "CoreDataDemoLoggingTableViewCell") as? CoreDataDemoLoggingTableViewCell else{
             return UITableViewCell()
         }
-        let student = self.asyncGeneratedDataSource?.students?[indexPath.item] ?? Student()
-        cell.logLabel.text = "Student Name: \(student.name ?? "")   |    Gender: \(student.gender ?? "")"
+        let student = self.mocGeneratedDataSource?.students?[indexPath.item] ?? Student()
+        cell.logLabel.text = "Generated -> name:\(student.name ?? "") | gender:\(student.gender ?? "")"
+
         return cell
     }
     
     // MARK: CoreDataDemoDataSourceDelegate
     func didCreated(students: [Student]) {
-        for _ in students{
-            self.tableView.insertRows(at: [IndexPath(row:self.lastRow, section:0)], with: .bottom)
-            self.scrollToBottom()
+        DispatchQueue.main.async {
+            for _ in students{
+                self.tableView.insertRows(at: [IndexPath(row:self.lastRow, section:0)], with: .bottom)
+                self.scrollToBottom()
+            }
         }
     }
     
     func didSaved(students: [Student]) {
-        
+//        DispatchQueue.main.async {
+//            for student in students{
+//                if let row = self.mocGeneratedDataSource?.students?.index(of: student){
+//                    self.tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .none)
+//                }
+//            }
+//        }
     }
     
     fileprivate func scrollToBottom(){
-        self.tableView.scrollToRow(at: IndexPath(row: lastRow, section: 0), at: .bottom , animated: true)
+        self.tableView.scrollToRow(at: IndexPath(row: lastRow, section: 0), at: .bottom , animated: false)
     }
 }
