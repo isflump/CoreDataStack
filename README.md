@@ -6,7 +6,13 @@ Since CoreData is such an intresting and powerful tool provide by Apple, I built
 
 ### Structure 
 
+### Demo Video Link
+https://www.screencast.com/t/eP2yO0VSWW
+
 ### Screenshoots 
+<img src="Screenshoot.png" width="250"/>
+
+
 
 
 
